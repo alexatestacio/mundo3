@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8031:8031
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=notifica
+      - DB_USER=notifica
+      - DB_PASSWORD=notifica
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=notifica
+      - POSTGRES_USER=notifica
+      - POSTGRES_PASSWORD=notifica
