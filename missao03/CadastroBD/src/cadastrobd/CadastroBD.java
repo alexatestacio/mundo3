@@ -5,6 +5,8 @@ import cadastrobd.model.PessoaJuridica;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import cadastrobd.model.util.ConectorBD;
+import cadastrobd.model.util.SequenceManager;
+
 
 public class CadastroBD {
 

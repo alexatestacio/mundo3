@@ -36,11 +36,6 @@ public class ConectorBD {
     public ResultSet getSelect(String sql) throws SQLException {
         Statement stmt = conexao.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
-        System.out.print("lalsasas");
-        while (rs.next()) {
-            System.out.print("Aeeauy");
-        }
-        System.out.print(rs.next());
         return rs;
     }
 

@@ -1,21 +1,19 @@
 package cadastrobd.model.util;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SequenceManager {
     public static int getValue(String sequenceName) {
-        Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
+        ConectorBD db = ConectorBD.getInstance();
         try {
-            conn = ConectorBD.getConnection();
-            String sql = "SELECT NEXT VALUE FOR " + sequenceName;
-            stmt = conn.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            PreparedStatement pstmt = db.getPrepared("SELECT NEXT VALUE FOR ?");
+            pstmt.setString(1, sequenceName);
+            rs = pstmt.executeQuery();
 
             if (rs.next()) {
                 return rs.getInt(1); // Obtém o próximo valor da sequência
@@ -26,9 +24,8 @@ public class SequenceManager {
             e.printStackTrace();
             throw new RuntimeException("Erro ao obter valor da sequência: " + e.getMessage());
         } finally {
-            ConectorBD.close(rs);
-            ConectorBD.close(stmt);
-            ConectorBD.close(conn);
+            db.close(rs);
+            db.close(stmt);
         }
     }
 }
