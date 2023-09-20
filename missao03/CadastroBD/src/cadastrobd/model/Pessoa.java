@@ -1,7 +1,7 @@
 package cadastrobd.model;
 
 public class Pessoa {
-    private int id;
+    private int pessoaID;
     private String nome;
     private String logradouro;
     private String cidade;
@@ -14,8 +14,8 @@ public class Pessoa {
     public Pessoa() {
     }
 
-    public Pessoa(int id, String nome, String logradouro, String cidade, String estado, String telefone, String email) {
-        this.id = id;
+    public Pessoa(int pessoaID, String nome, String logradouro, String cidade, String estado, String telefone, String email) {
+        this.pessoaID = pessoaID;
         this.nome = nome;
         this.logradouro = logradouro;
         this.cidade = cidade;
@@ -25,12 +25,12 @@ public class Pessoa {
     }
 
 
-    public int getId() {
-        return id;
+    public int getPessoaID() {
+        return pessoaID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPessoaID(int pessoaID) {
+        this.pessoaID = pessoaID;
     }
 
     public String getNome() {
@@ -82,7 +82,7 @@ public class Pessoa {
     }
 
     public void exibir() {
-        System.out.println("ID: " + id);
+        System.out.println("PessoaID: " + pessoaID);
         System.out.println("Nome: " + nome);
         System.out.println("Logradouro: " + logradouro);
         System.out.println("Cidade: " + cidade);
